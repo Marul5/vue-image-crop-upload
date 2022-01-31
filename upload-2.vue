@@ -460,6 +460,13 @@ export default {
 					lang,
 					maxSize
 				} = that;
+				
+			if (file.type === 'image/tiff') {
+				that.hasError = true;
+				that.errorMsg = lang.fail;
+				return false;
+			}
+			
 			// 仅限图片
 			if (file.type.indexOf('image') === -1) {
 				that.hasError = true;
