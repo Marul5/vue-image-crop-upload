@@ -471,14 +471,14 @@ export default {
 			if (file.type.indexOf('image') === -1) {
 				that.hasError = true;
 				that.errorMsg = lang.error.onlyImg;
-				return false;
+				return that.$emit('crop-upload-fail', 'wrong-type');
 			}
 
 			// 超出大小
 			if (file.size / 1024 > maxSize) {
 				that.hasError = true;
 				that.errorMsg = lang.error.outOfSize + maxSize + 'kb';
-				return false;
+				return that.$emit('crop-upload-fail', 'max-size');
 			}
 			return true;
 		},
